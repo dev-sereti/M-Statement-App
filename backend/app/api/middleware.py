@@ -1,4 +1,9 @@
-"""Custom middleware for logging, rate limiting, security headers."""
+"""
+Custom middleware for logging, rate limiting, security headers.
+
+Fix: Starlette/FastAPI Response.headers is a MutableHeaders object and does NOT
+support .pop(). Use `del response.headers["Header-Name"]` after checking.
+"""
 
 import time
 import uuid
@@ -11,7 +16,6 @@ from starlette.requests import Request
 from starlette.responses import Response, JSONResponse
 from fastapi import status
 
-from app.config import settings
 from app.security import RateLimiter
 
 logger = logging.getLogger(__name__)
@@ -45,6 +49,7 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
         try:
             response = await call_next(request)
             duration_ms = (time.time() - start_time) * 1000
+
             response.headers["X-Request-ID"] = request_id
             response.headers["X-Process-Time"] = f"{duration_ms:.2f}ms"
 
@@ -59,8 +64,7 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
         except Exception as e:
             duration_ms = (time.time() - start_time) * 1000
             logger.error(
-                f"[{request_id}] ERROR {request.url.path} "
-                f"{duration_ms:.2f}ms: {e}"
+                f"[{request_id}] ERROR {request.url.path} {duration_ms:.2f}ms: {e}"
             )
             raise
 
@@ -94,7 +98,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
 
 
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
-    """Add security headers to all responses."""
+    """Add security headers to all responses (and safely remove server headers)."""
 
     HEADERS = {
         "X-Content-Type-Options": "nosniff",
@@ -107,9 +111,22 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
         response = await call_next(request)
+
+        # Add security headers
         for header, value in self.HEADERS.items():
             response.headers[header] = value
-        response.headers.pop("Server", None)
+
+        # FIX: MutableHeaders does not support `.pop()`
+        # Remove server identification headers safely.
+        if "server" in response.headers:
+            del response.headers["server"]
+        if "Server" in response.headers:
+            del response.headers["Server"]
+        if "x-powered-by" in response.headers:
+            del response.headers["x-powered-by"]
+        if "X-Powered-By" in response.headers:
+            del response.headers["X-Powered-By"]
+
         return response
 
 
@@ -134,6 +151,7 @@ class RequestSizeLimitMiddleware(BaseHTTPMiddleware):
                     )
             except ValueError:
                 pass
+
         return await call_next(request)
 
 
