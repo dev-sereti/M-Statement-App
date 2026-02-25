@@ -1,0 +1,65 @@
+.upload-container {
+  padding: 1rem;
+}
+
+.dropzone {
+  border: 3px dashed #4CAF50;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #f8faf8;
+}
+
+.dropzone:hover,
+.dropzone.active {
+  border-color: #2E7D32;
+  background: #e8f5e9;
+  transform: scale(1.01);
+}
+
+.dropzone.uploading {
+  border-color: #2196F3;
+  background: #e3f2fd;
+  cursor: wait;
+}
+
+.upload-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: #6c757d;
+  margin: 0.5rem 0;
+}
+
+.constraints {
+  color: #adb5bd;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+}
+
+.upload-spinner {
+  width: 30px;
+  height: 30px;
+  margin: 1rem auto;
+  border: 3px solid #e3f2fd;
+  border-top-color: #2196F3;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.upload-error {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #ffebee;
+  border-radius: 8px;
+  color: #c62828;
+  text-align: center;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
