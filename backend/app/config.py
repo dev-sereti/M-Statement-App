@@ -1,16 +1,11 @@
-"""Application configuration with environment variable support."""
-
+from pathlib import Path
 import os
 import secrets
-from pathlib import Path
 from typing import List
-
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    """Application settings loaded from environment variables."""
-
     # Application
     APP_NAME: str = "MPesa Statement Processor"
     DEBUG: bool = os.getenv("DEBUG", "false").lower() == "true"
@@ -27,13 +22,11 @@ class Settings(BaseSettings):
     RATE_LIMIT_PER_MINUTE: int = int(os.getenv("RATE_LIMIT_PER_MINUTE", "10"))
     SESSION_EXPIRE_MINUTES: int = int(os.getenv("SESSION_EXPIRE_MINUTES", "30"))
 
-    # CORS
+    # CORS / Hosts
     ALLOWED_ORIGINS: List[str] = os.getenv(
-        "ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000"
+        "ALLOWED_ORIGINS", "http://localhost:3000"
     ).split(",")
-    ALLOWED_HOSTS: List[str] = os.getenv(
-        "ALLOWED_HOSTS", "localhost,127.0.0.1"
-    ).split(",")
+    ALLOWED_HOSTS: List[str] = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
     class Config:
         env_file = ".env"
@@ -41,8 +34,13 @@ class Settings(BaseSettings):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
-        self.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+        # create dirs if missing
+        try:
+            self.UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+            self.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+        except Exception:
+            # if path permissions or Windows path issues, ignore here and let caller handle
+            pass
 
 
 settings = Settings()
