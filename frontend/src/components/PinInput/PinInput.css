@@ -1,0 +1,99 @@
+.pin-container {
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-top: 1.5rem;
+}
+
+.pin-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.lock-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.pin-desc {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.pin-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.pin-input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.pin-input {
+  flex: 1;
+  padding: 0.875rem;
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  text-align: center;
+  letter-spacing: 2px;
+  transition: border-color 0.2s;
+}
+
+.pin-input:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.toggle-visibility {
+  padding: 0.875rem;
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.attempts-warning {
+  padding: 0.75rem;
+  background: #fff9c4;
+  border-radius: 8px;
+  color: #f57f17;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.lockout-message {
+  text-align: center;
+  padding: 2rem;
+  color: #c62828;
+  background: #ffebee;
+  border-radius: 10px;
+}
