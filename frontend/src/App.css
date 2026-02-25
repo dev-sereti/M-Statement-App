@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #f0f4f0 0%, #e0e8e0 100%);
+  min-height: 100vh;
+  color: #212529;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.app-header {
+  background: linear-gradient(135deg, #1B5E20 0%, #4CAF50 100%);
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(27, 94, 32, 0.3);
+}
+
+.header-content h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.header-content p {
+  opacity: 0.9;
+  font-size: 1.05rem;
+}
+
+/* Main */
+.app-main {
+  flex: 1;
+  padding: 2rem 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Pin Step */
+.pin-step {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Error States */
+.error-banner {
+  padding: 0.875rem 1rem;
+  background: #ffebee;
+  border-radius: 10px;
+  color: #c62828;
+  text-align: center;
+  font-size: 0.95rem;
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.error-state {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.error-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.error-state h2 {
+  color: #c62828;
+  margin-bottom: 0.5rem;
+}
+
+.error-state p {
+  color: #6c757d;
+  margin-bottom: 2rem;
+}
+
+.retry-btn {
+  padding: 0.875rem 2rem;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Footer */
+.app-footer {
+  background: #263238;
+  color: #b0bec5;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.footer-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-badges span {
+  padding: 0.4rem 0.75rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.app-footer p {
+  font-size: 0.8rem;
+  color: #78909c;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .app-header { padding: 1.5rem 1rem; }
+  .header-content h1 { font-size: 1.3rem; }
+  .app-main { padding: 1rem 0.75rem; }
+}
