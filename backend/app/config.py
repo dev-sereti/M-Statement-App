@@ -5,7 +5,7 @@ import secrets
 from pathlib import Path
 from typing import List
 
-from pydantic_settings import BaseSettings
+from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
