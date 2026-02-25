@@ -1,0 +1,154 @@
+.result-download {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.success-header {
+  margin-bottom: 2rem;
+}
+
+.success-icon {
+  font-size: 4rem;
+  animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.success-header h2 {
+  color: #2e7d32;
+  margin-top: 0.5rem;
+}
+
+.summary-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: #6c757d;
+}
+
+.value {
+  font-weight: 600;
+}
+
+.value.highlight {
+  color: #4CAF50;
+  font-size: 1.3rem;
+}
+
+.warnings {
+  margin-bottom: 1.5rem;
+}
+
+.warnings-toggle {
+  background: #fff9c4;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #f57f17;
+  width: 100%;
+}
+
+.warnings-list {
+  text-align: left;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.excel-features {
+  margin-bottom: 2rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.features-grid span {
+  padding: 0.5rem;
+  background: #f1f8e9;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 350px;
+  margin: 0 auto 1.5rem;
+}
+
+.download-btn {
+  padding: 1rem;
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.download-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.download-btn.downloaded {
+  background: linear-gradient(135deg, #2196F3, #42A5F5);
+}
+
+.download-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.reset-btn {
+  padding: 0.75rem;
+  background: transparent;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-btn:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.data-notice {
+  padding: 0.75rem;
+  background: #e8f5e9;
+  border-radius: 8px;
+  color: #2e7d32;
+  font-size: 0.85rem;
+}
