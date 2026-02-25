@@ -43,7 +43,7 @@ pin_tracker = PinAttemptTracker(max_attempts=settings.MAX_PIN_ATTEMPTS)
 sessions: Dict[str, dict] = {}
 
 
-# ─── Health ────────────────────────────────────────────────────
+# ─── Health ───
 
 @router.get("/health", response_model=HealthResponse)
 async def health_check():
@@ -56,7 +56,7 @@ async def health_check():
     )
 
 
-# ─── Upload ───────────────────────────────────────────────────
+# ─── Upload ──
 
 @router.post("/upload", response_model=UploadResponse)
 async def upload_pdf(
@@ -136,7 +136,7 @@ async def upload_pdf(
     )
 
 
-# ─── Process ──────────────────────────────────────────────────
+# ─── Process ─
 
 @router.post("/process", response_model=ProcessResponse)
 async def process_statement(
@@ -268,7 +268,7 @@ async def process_statement(
     )
 
 
-# ─── Download ─────────────────────────────────────────────────
+# ─── Download 
 
 @router.get("/download/{download_token}")
 async def download_excel(
