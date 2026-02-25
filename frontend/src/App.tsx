@@ -87,7 +87,7 @@ const App: React.FC = () => {
     <div className="app">
       <header className="app-header">
         <div className="header-content">
-          <h1>📊 MPesa Statement Processor</h1>
+          <h1>MPesa Statement Processor</h1>
           <p>Convert your MPesa PDF statements to Excel instantly</p>
         </div>
       </header>
