@@ -50,7 +50,7 @@ class MPesaExcelGenerator:
         logger.info(f"Excel generated: {len(statement.transactions)} txns")
         return buffer.getvalue()
 
-    # ─── Summary Sheet 
+    #  Summary Sheet 
 
     def _create_summary_sheet(
         self, wb: openpyxl.Workbook, stmt: ParsedStatement
@@ -138,7 +138,7 @@ class MPesaExcelGenerator:
         for col_letter, w in [("A", 30), ("B", 15), ("C", 20), ("D", 20), ("E", 15)]:
             ws.column_dimensions[col_letter].width = w
 
-    # ─── Transactions Sheet 
+    #  Transactions Sheet 
 
     def _create_transactions_sheet(
         self, wb: openpyxl.Workbook, stmt: ParsedStatement
@@ -217,7 +217,7 @@ class MPesaExcelGenerator:
         ws.freeze_panes = "A2"
         ws.auto_filter.ref = f"A1:{get_column_letter(len(headers))}1"
 
-    # ─── Monthly Breakdown Sheet ─
+    #  Monthly Breakdown Sheet ─
 
     def _create_monthly_sheet(
         self, wb: openpyxl.Workbook, stmt: ParsedStatement
@@ -291,7 +291,7 @@ class MPesaExcelGenerator:
         for col_letter, w in [("A", 20), ("B", 15), ("C", 18), ("D", 18), ("E", 15)]:
             ws.column_dimensions[col_letter].width = w
 
-    # ─── Type Analysis Sheet ─────
+    #  Type Analysis Sheet 
 
     def _create_type_analysis_sheet(
         self, wb: openpyxl.Workbook, stmt: ParsedStatement
@@ -329,7 +329,7 @@ class MPesaExcelGenerator:
         for col_letter, w in [("A", 25), ("B", 10), ("C", 12), ("D", 18), ("E", 18), ("F", 15)]:
             ws.column_dimensions[col_letter].width = w
 
-    # ─── Helpers 
+    #  Helpers 
 
     def _section_header(
         self, ws, row: int, start: str, end: str, title: str
